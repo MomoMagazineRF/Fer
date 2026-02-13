@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Quieres ser mi San Valentín? - Momo Magazine</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #FFB800;
+            --secondary: #F5F5F5;
+            --text: #2B2B2B;
+            --border: #E0E0E0;
+        }
+
+        body {
+            font-family: 'Libre Baskerville', serif;
+            background: #F8F6F0;
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.8;
+        }
+
+        /* Magazine Header */
+        .header-nav {
+            background: white;
+            border-bottom: 3px solid #1A2332;
+            padding: 1.5rem 5%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #666;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .magazine-date {
+            font-weight: 600;
+        }
+
+        .magazine-edition {
+            font-style: italic;
+        }
+
+        .magazine-masthead {
+            text-align: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 900;
+            letter-spacing: 12px;
+            color: #1A2332;
+            text-transform: uppercase;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .magazine-tagline {
+            font-size: 0.75rem;
+            letter-spacing: 4px;
+            color: #999;
+            text-transform: uppercase;
+            padding: 0.5rem 0;
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .nav-links {
+            display: none;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-top: 3rem;
+            min-height: calc(100vh - 200px);
+            display: flex;
+            align-items: center;
+            padding: 3rem 5%;
+        }
+
+        .proposal-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        /* Left Content */
+        .proposal-content {
+            padding: 2rem 0;
+        }
+
+        .category-badge {
+            display: inline-block;
+            background: #D4AF37;
+            color: white;
+            padding: 0.5rem 1.5rem;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        .proposal-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            color: #1A2332;
+            letter-spacing: -1px;
+        }
+
+        .countdown-display {
+            background: #1A2332;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+
+        .countdown-label {
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            opacity: 0.8;
+            text-transform: uppercase;
+        }
+
+        .countdown-timer {
+            font-size: 1.3rem;
+            letter-spacing: 3px;
+        }
+
+        .proposal-description {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            margin-bottom: 1rem;
+            color: #555;
+        }
+
+        .proposal-warning {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: #888;
+            font-style: italic;
+            margin-bottom: 2.5rem;
+        }
+
+        /* Buttons */
+        .buttons-container {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            position: relative;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            font-size: 0.85rem;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Libre Baskerville', serif;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .btn-accept {
+            background: #D4AF37;
+            color: white;
+            transform: scale(1);
+            border: 2px solid #D4AF37;
+            position: relative;
+            transition: transform 0.3s ease, padding 0.3s ease, font-size 0.3s ease;
+        }
+
+        .btn-accept:hover {
+            background: white;
+            color: #1A2332;
+            border: 2px solid #1A2332;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-decline {
+            background: white;
+            color: #1A2332;
+            border: 2px solid #1A2332;
+            transition: all 0.3s ease;
+            transform: scale(1);
+        }
+
+        .btn-decline:hover {
+            background: #1A2332;
+            color: white;
+        }
+
+        /* Image Container */
+        .image-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .portrait-circle {
+            width: 100%;
+            max-width: 500px;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 15px solid white;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            position: relative;
+            transition: transform 0.3s ease;
+            background: white;
+        }
+
+        .portrait-image {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10rem;
+            transition: opacity 0.3s ease;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .portrait-image.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .portrait-image.visible {
+            opacity: 1;
+        }
+
+        /* Success Modal */
+        .success-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .success-modal.show {
+            display: flex;
+        }
+
+        .success-content {
+            background: white;
+            padding: 4rem;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 600px;
+            animation: slideUp 0.5s ease;
+        }
+
+        .success-emoji {
+            font-size: 6rem;
+            margin-bottom: 2rem;
+            animation: bounce 1s ease infinite;
+        }
+
+        .success-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            color: var(--text);
+        }
+
+        .success-message {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 2rem;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+            }
+            50% {
+                transform: translateY(-20px) scale(1.1);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .proposal-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .portrait-circle {
+                max-width: 400px;
+            }
+
+            .proposal-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .logo {
+                font-size: 2rem;
+                letter-spacing: 6px;
+            }
+
+            .buttons-container {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .portrait-circle {
+                max-width: 320px;
+            }
+
+            .portrait-image {
+                font-size: 6rem;
+            }
+
+            .success-content {
+                padding: 2rem;
+                margin: 1rem;
+            }
+
+            .success-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header-nav">
+        <nav class="nav-container">
+            <div class="header-top">
+                <span class="magazine-date" id="currentDate"></span>
+                <span class="magazine-edition">Edición Especial de Amor</span>
+            </div>
+            <div class="magazine-masthead">
+                <h1 class="logo">MOMO</h1>
+                <p class="magazine-tagline">Magazine de Historias & Amor</p>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="proposal-container">
+            <!-- Left Side Content -->
+            <div class="proposal-content">
+                <div class="category-badge">PREGUNTA ESPECIAL</div>
+                <h1 class="proposal-title">¿Quieres ser mi San Valentín?</h1>
+                
+                <div class="countdown-display">
+                    <div class="countdown-label">Faltan</div>
+                    <div class="countdown-timer" id="countdown">Calculando...</div>
+                </div>
+                
+                <p class="proposal-description">
+                    Un día diseñado para verte sonreír sin darte cuenta.
+                </p>
+                <p class="proposal-description">
+                    Posible pérdida de la noción del tiempo.
+                </p>
+                <p class="proposal-warning">
+                    Advertencia: Puede haber exceso de amor y abrazos.
+                </p>
+
+                <!-- Buttons -->
+                <div class="buttons-container">
+                    <button class="btn btn-accept" id="btnAccept" onclick="handleAccept()">
+                        Acepto
+                    </button>
+                    <button class="btn btn-decline" id="btnDecline" 
+                            onmouseenter="handleDeclineHover(true)" 
+                            onmouseleave="handleDeclineHover(false)"
+                            onclick="handleDeclineClick()">
+                        No acepto
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right Side Image -->
+            <div class="image-container">
+                <div class="portrait-circle">
+                    <!-- Normal Face -->
+                    <div class="portrait-image visible" id="normalFace" style="background: linear-gradient(135deg, #FFE5D3 0%, #FFC8B4 100%);">
+                        <img src="img/inicial.png" alt="" class="cover"
+                                        style="width:100%; height:100%; object-fit:cover; object-position:center; transform:scale(1.1);">
+                    </div>
+                    <!-- Sad Face (on hover "No acepto") -->
+                    <div class="portrait-image hidden" id="sadFace" style="background: linear-gradient(135deg, #E8D5C4 0%, #C4A59A 100%);">
+                        <img src="img/preocupado.png" alt="" class="cover"
+                                        style="width:100%; height:100%; object-fit:cover; object-position:center; transform:scale(1.1);">
+                    </div>
+                    <!-- Grinning Face with teeth (on accept) -->
+                    <div class="portrait-image hidden" id="happyFace" style="background: linear-gradient(135deg, #FFE5D3 0%, #FFD700 100%);">
+                        <img src="img/feliz.png" alt="" class="cover"
+                                        style="width:100%; height:100%; object-fit:cover; object-position:center; transform:scale(1.1);">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Success Modal -->
+    <div class="success-modal" id="successModal">
+        <div class="success-content">
+            <div class="success-emoji">💖</div>
+            <h2 class="success-title">¡GRACIAS POR SER MI SAN VALENTIN!</h2>
+            <p class="success-message">
+                ¡Sabía que dirías que sí! 
+            </p>
+            <button class="btn btn-accept" onclick="closeModal()" style="animation: none;">
+                ¡Estoy emocionada!
+            </button>
+        </div>
+    </div>
+
+    <script>
+        let declineClickCount = 0;
+let acceptScale = 1;
+const maxDeclineClicks = 5;
+let cursorFollowEnabled = false;
+
+// Verificar si ya aceptó al cargar la página
+window.addEventListener('load', function() {
+    if (localStorage.getItem('valentineAccepted') === 'true') {
+        restoreAcceptedState();
+    }
+});
+
+// Restaurar el estado cuando ya se aceptó
+function restoreAcceptedState() {
+    const btnAccept = document.getElementById('btnAccept');
+    const btnDecline = document.getElementById('btnDecline');
+    const normalFace = document.getElementById('normalFace');
+    const sadFace = document.getElementById('sadFace');
+    const happyFace = document.getElementById('happyFace');
+
+    // Ocultar botón de decline
+    btnDecline.style.display = 'none';
+    
+    // Mostrar cara feliz
+    normalFace.classList.remove('visible');
+    normalFace.classList.add('hidden');
+    sadFace.classList.add('hidden');
+    happyFace.classList.remove('hidden');
+    happyFace.classList.add('visible');
+    
+    // Deshabilitar botón de aceptar
+    btnAccept.disabled = true;
+    btnAccept.style.cursor = 'default';
+    btnAccept.style.opacity = '0.7';
+    document.getElementById('successModal').classList.add('show');
+}
+
+// Set current date
+function setCurrentDate() {
+    const options = { 
+        weekday: 'long', 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric' 
+    };
+    const currentDate = new Date().toLocaleDateString('es-ES', options);
+    document.getElementById('currentDate').textContent = currentDate.toUpperCase();
+}
+
+// Make accept button follow cursor (only when enabled)
+document.addEventListener('mousemove', (e) => {
+    const btnAccept = document.getElementById('btnAccept');
+    if (btnAccept && cursorFollowEnabled && !btnAccept.classList.contains('clicked')) {
+        // Offset to center the button on cursor
+        const offsetX = btnAccept.offsetWidth / 2;
+        const offsetY = btnAccept.offsetHeight / 2;
+        
+        btnAccept.style.left = (e.clientX - offsetX) + 'px';
+        btnAccept.style.top = (e.clientY - offsetY) + 'px';
+    }
+});
+
+// Countdown Timer
+function updateCountdown() {
+    const targetDate = new Date('2026-02-14T18:30:00').getTime();
+    const now = new Date().getTime();
+    const difference = targetDate - now;
+
+    if (difference < 0) {
+        document.getElementById('countdown').textContent = '¡ES HOY!';
+        return;
+    }
+
+    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+    document.getElementById('countdown').textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+}
+
+// Handle decline button hover
+function handleDeclineHover(isHovering) {
+    const normalFace = document.getElementById('normalFace');
+    const sadFace = document.getElementById('sadFace');
+
+    if (isHovering) {
+        normalFace.classList.remove('visible');
+        normalFace.classList.add('hidden');
+        sadFace.classList.remove('hidden');
+        sadFace.classList.add('visible');
+    } else {
+        sadFace.classList.remove('visible');
+        sadFace.classList.add('hidden');
+        normalFace.classList.remove('hidden');
+        normalFace.classList.add('visible');
+    }
+}
+
+// Handle decline click - shrink progressively
+function handleDeclineClick() {
+    const btnDecline = document.getElementById('btnDecline');
+    const btnAccept = document.getElementById('btnAccept');
+    
+    declineClickCount++;
+
+    // Calculate new scale for decline button (shrinks by 20% each click)
+    const declineScale = 1 - (declineClickCount * 0.2);
+    
+    // Calculate new scale for accept button (grows by 15% each click)
+    acceptScale = 1 + (declineClickCount * 0.15);
+
+    if (declineClickCount >= maxDeclineClicks) {
+        // Hide decline button completely
+        btnDecline.style.transform = 'scale(0)';
+        btnDecline.style.opacity = '0';
+        
+        setTimeout(() => {
+            btnDecline.style.display = 'none';
+            
+            // NOW enable cursor following for accept button
+            cursorFollowEnabled = true;
+            btnAccept.style.position = 'fixed';
+            btnAccept.style.zIndex = '1000';
+            
+            // Add pulsing animation to make it more obvious
+            btnAccept.style.animation = 'bounce 1s ease infinite';
+        }, 300);
+    } else {
+        // Shrink decline button
+        btnDecline.style.transform = `scale(${declineScale})`;
+        
+        // Grow accept button slightly
+        btnAccept.style.transform = `scale(${acceptScale})`;
+    }
+}
+
+// Create image to download
+function createValentineImage() {
+    const a = document.createElement('a');
+    a.href = 'img/ticket.png';
+    a.download = 'momo.png';
+    a.style.display = 'none';
+    document.body.appendChild(a);
+    a.click();
+    
+    // Remover el elemento después de un pequeño delay
+    setTimeout(() => {
+        document.body.removeChild(a);
+    }, 100);
+}
+
+// Handle accept
+function handleAccept() {
+    const btnAccept = document.getElementById('btnAccept');
+    const btnDecline = document.getElementById('btnDecline');
+    const normalFace = document.getElementById('normalFace');
+    const sadFace = document.getElementById('sadFace');
+    const happyFace = document.getElementById('happyFace');
+
+    // GUARDAR ESTADO EN localStorage
+    localStorage.setItem('valentineAccepted', 'true');
+
+    // Mark button as clicked to stop following cursor
+    btnAccept.classList.add('clicked');
+    cursorFollowEnabled = false;
+    btnAccept.style.animation = 'none';
+
+    // Hide decline button if visible
+    if (btnDecline.style.display !== 'none') {
+        btnDecline.style.transform = 'scale(0)';
+        btnDecline.style.opacity = '0';
+        setTimeout(() => {
+            btnDecline.style.display = 'none';
+        }, 300);
+    }
+
+    // Change to grinning face with teeth (😁)
+    normalFace.classList.remove('visible');
+    normalFace.classList.add('hidden');
+    sadFace.classList.remove('visible');
+    sadFace.classList.add('hidden');
+    happyFace.classList.remove('hidden');
+    happyFace.classList.add('visible');
+
+    // Final celebration animation
+    btnAccept.style.animation = 'bounce 0.5s ease';
+
+    // Show success modal after a brief delay
+    setTimeout(() => {
+        document.getElementById('successModal').classList.add('show');
+        // Download image after showing modal
+        setTimeout(() => {
+            createValentineImage();
+        }, 500);
+    }, 800);
+}
+
+// Close modal
+function closeModal() {
+    document.getElementById('successModal').classList.remove('show');
+}
+
+// Initialize
+setCurrentDate();
+updateCountdown();
+setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>

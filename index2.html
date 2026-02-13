@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Renato & Fernanda - Momo Magazine</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,600;1,400&family=Cormorant+Garamond:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --coral: #FF7F6E;
+            --peach: #FFB88C;
+            --sunset: #FF9A76;
+            --ocean: #5B9AA0;
+            --deep-ocean: #2C5F6F;
+            --sand: #FFF5E9;
+            --navy: #1A2332;
+            --cream: #FFFEF9;
+            --gold: #D4AF37;
+            --paper: #F8F6F0;
+            --ink: #2B2B2B;
+            --rose-gold: #B76E79;
+            --champagne: #F7E7CE;
+        }
+
+        body {
+            font-family: 'Libre Baskerville', serif;
+            color: var(--ink);
+            background: var(--paper);
+            overflow-x: hidden;
+            line-height: 1.8;
+        }
+
+        /* Magazine Header - MEJORADO */
+        .magazine-header {
+            background: linear-gradient(to bottom, #ffffff 0%, #fafaf8 100%);
+            border-bottom: 1px solid #e5e3dc;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            padding: 2rem 5%;
+            position: relative;
+        }
+
+        .magazine-header::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 5%;
+            right: 5%;
+            height: 3px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                var(--navy) 20%, 
+                var(--navy) 80%, 
+                transparent 100%);
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: #888;
+            margin-bottom: 1.8rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+            font-weight: 600;
+        }
+
+        .magazine-date {
+            position: relative;
+            padding-left: 1.2rem;
+        }
+
+        .magazine-date::before {
+            content: '●';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-size: 0.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .magazine-edition {
+            font-style: italic;
+            position: relative;
+            padding-right: 1.2rem;
+        }
+
+        .magazine-edition::after {
+            content: '●';
+            position: absolute;
+            right: 0;
+            color: var(--gold);
+            font-size: 0.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .magazine-masthead {
+            text-align: center;
+            position: relative;
+        }
+
+        .magazine-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3.5rem, 10vw, 6rem);
+            font-weight: 900;
+            letter-spacing: 20px;
+            color: var(--navy);
+            text-transform: uppercase;
+            line-height: 1;
+            margin-bottom: 0.8rem;
+            text-shadow: 2px 2px 0 rgba(212, 175, 55, 0.1);
+            position: relative;
+            display: inline-block;
+        }
+
+        .magazine-title::before,
+        .magazine-title::after {
+            content: '◆';
+            position: absolute;
+            font-size: 1.2rem;
+            color: var(--gold);
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0.6;
+        }
+
+        .magazine-title::before {
+            left: -2.5rem;
+        }
+
+        .magazine-title::after {
+            right: -2.5rem;
+        }
+
+        .magazine-tagline {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.85rem;
+            letter-spacing: 5px;
+            color: #999;
+            text-transform: uppercase;
+            padding: 1rem 0;
+            border-top: 1px solid rgba(0,0,0,0.08);
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+            font-weight: 400;
+            margin-top: 0.5rem;
+        }
+
+        /* Featured Article Hero - MEJORADO */
+        .featured-hero {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 5%;
+            position: relative;
+        }
+
+        .article-header {
+            text-align: center;
+            padding: 5rem 0 3rem;
+            position: relative;
+        }
+
+        /* Decorative elements */
+        .article-header::before {
+            content: '';
+            position: absolute;
+            top: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+
+        .category-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold) 0%, #b8941f 100%);
+            color: white;
+            padding: 0.7rem 2.5rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 2.5rem;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+        }
+
+        .category-badge::before,
+        .category-badge::after {
+            content: '✦';
+            position: absolute;
+            color: rgba(255,255,255,0.6);
+            font-size: 0.6rem;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .category-badge::before {
+            left: 0.8rem;
+        }
+
+        .category-badge::after {
+            right: 0.8rem;
+        }
+
+        .article-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-weight: 900;
+            color: var(--navy);
+            line-height: 1.05;
+            margin-bottom: 2rem;
+            letter-spacing: 2px;
+            position: relative;
+            display: inline-block;
+            background: linear-gradient(180deg, var(--navy) 0%, var(--navy) 70%, var(--rose-gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .article-title::after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--coral), transparent);
+        }
+
+        .article-deck {
+            font-family: 'Lora', serif;
+            font-size: clamp(1.15rem, 2.8vw, 1.5rem);
+            font-style: italic;
+            color: #666;
+            line-height: 1.7;
+            max-width: 750px;
+            margin: 0 auto 3rem;
+            font-weight: 400;
+            position: relative;
+            padding: 0 2rem;
+        }
+
+        .article-deck::before,
+        .article-deck::after {
+            content: '"';
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            position: absolute;
+            color: rgba(212, 175, 55, 0.15);
+            font-style: normal;
+            line-height: 1;
+        }
+
+        .article-deck::before {
+            left: -1rem;
+            top: -1rem;
+        }
+
+        .article-deck::after {
+            right: -1rem;
+            bottom: -2rem;
+            transform: rotate(180deg);
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+            margin-top: 3.5rem;
+            position: relative;
+            padding-top: 2rem;
+        }
+
+        .article-meta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(0,0,0,0.15), transparent);
+        }
+
+        .countdown-container {
+            background: linear-gradient(135deg, var(--navy) 0%, #0d1419 100%);
+            color: white;
+            padding: 1.5rem 3rem;
+            border-radius: 0;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            position: relative;
+            box-shadow: 
+                0 10px 40px rgba(26, 35, 50, 0.3),
+                inset 0 1px 0 rgba(255,255,255,0.1);
+            clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+        }
+
+        .countdown-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, transparent 0%, rgba(212, 175, 55, 0.1) 100%);
+            pointer-events: none;
+        }
+
+        .countdown-label {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            margin-bottom: 0.6rem;
+            opacity: 0.9;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        .countdown-timer {
+            font-size: 1.6rem;
+            letter-spacing: 4px;
+            font-variant-numeric: tabular-nums;
+            position: relative;
+            z-index: 1;
+        }
+
+        .action-button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: transparent;
+            color: var(--navy);
+            text-decoration: none;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            border: 2px solid var(--navy);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            clip-path: polygon(12px 0, 100% 0, calc(100% - 12px) 100%, 0 100%);
+        }
+
+        .action-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--navy);
+            transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: -1;
+        }
+
+        .action-button:hover {
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(26, 35, 50, 0.25);
+        }
+
+        .action-button:hover::before {
+            left: 0;
+        }
+
+        .action-button::after {
+            content: '→';
+            position: absolute;
+            right: 1.5rem;
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .action-button:hover::after {
+            opacity: 1;
+            right: 1rem;
+        }
+
+        /* Two Column Layout */
+        .article-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin: 4rem 0;
+            align-items: start;
+            padding-bottom: 3rem;
+            border-bottom: 2px solid rgba(0,0,0,0.08);
+        }
+
+        .article-content {
+            column-count: 1;
+        }
+
+        .drop-cap::first-letter {
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            font-weight: 900;
+            line-height: 0.8;
+            float: left;
+            margin: 0.1rem 0.1rem 0 0;
+            color: var(--coral);
+        }
+
+        .article-text {
+            font-size: 1rem;
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        .pull-quote {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            font-style: italic;
+            line-height: 1.4;
+            color: var(--coral);
+            margin: 2rem 0;
+            padding: 2rem;
+            border-left: 4px solid var(--gold);
+            background: rgba(255, 127, 110, 0.05);
+        }
+
+        /* Feature Image Section */
+        .feature-image-section {
+            position: relative;
+        }
+
+        .feature-portrait {
+            width: 100%;
+            max-width: 450px;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 15px solid white;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            margin: 0 auto 2rem;
+            background: linear-gradient(135deg, #FFE5D3 0%, #FFC8B4 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            position: relative;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .image-caption {
+            font-size: 0.85rem;
+            font-style: italic;
+            color: #666;
+            text-align: center;
+            padding: 0 2rem;
+            line-height: 1.5;
+        }
+
+        .decorative-flowers {
+            position: absolute;
+            font-size: 2.5rem;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .flower-1 { top: -10%; right: 10%; animation-delay: 0s; }
+        .flower-2 { bottom: 10%; left: 5%; animation-delay: 1s; }
+        .flower-3 { top: 20%; left: -5%; animation-delay: 2s; font-size: 1.8rem; }
+
+        /* Sunset Feature Section */
+        .feature-spread{
+            background-image:
+                linear-gradient(
+to bottom,
+rgba(255,120,40,0.75) 0%,
+rgba(255,160,60,0.60) 35%,
+rgba(70,140,160,0.60) 70%,
+rgba(30,80,95,0.75) 100%
+),
+                url("img/FondoF.jpeg");
+
+            background-size: cover;
+
+            padding: 5rem 5%;
+            margin: 5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-spread::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--navy);
+        }
+
+        .feature-spread::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--navy);
+        }
+
+        .palm-illustration {
+            position: absolute;
+            left: 5%;
+            bottom: 0;
+            width: 180px;
+            height: 320px;
+            z-index: 2;
+        }
+
+        .sun-illustration {
+            position: absolute;
+            right: 8%;
+            top: 35%;
+            width: 140px;
+            height: 140px;
+            background: radial-gradient(circle, #FFE5B4 0%, #FFD89C 100%);
+            border-radius: 50%;
+            box-shadow: 0 0 80px rgba(255, 215, 0, 0.5);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        .birds-illustration {
+            position: absolute;
+            right: 18%;
+            top: 25%;
+            font-size: 1.5rem;
+        }
+
+        .bird {
+            display: inline-block;
+            margin: 0 0.5rem;
+            animation: fly 8s ease-in-out infinite;
+        }
+
+        .bird:nth-child(2) { animation-delay: 0.5s; }
+        .bird:nth-child(3) { animation-delay: 1s; }
+
+        .spread-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            position: relative;
+            z-index: 3;
+        }
+
+        .spread-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 900;
+            color: var(--navy);
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 3px solid var(--gold);
+        }
+
+        /* Moments Gallery */
+        .moments-gallery {
+            margin-bottom: 3rem;
+        }
+
+        .moments-container {
+            position: relative;
+            min-height: 500px;
+            overflow: visible;
+            padding: 2rem 0;
+        }
+
+        .moments-track {
+            position: relative;
+            width: 100%;
+        }
+
+        .moment-card {
+            position: absolute;
+            width: 100%;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: scale(0.95);
+            transition: opacity 0.5s ease, transform 0.5s ease, visibility 0s 0.5s;
+        }
+
+        .moment-card.active {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1);
+            position: relative;
+            transition: opacity 0.5s ease, transform 0.5s ease, visibility 0s 0s;
+        }
+
+        .moment-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .moment-number {
+            display: inline-block;
+            background: var(--gold);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 1rem;
+        }
+
+        .moment-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .moment-date {
+            font-size: 0.9rem;
+            color: #999;
+            font-style: italic;
+        }
+
+        .moment-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .moment-image {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 12px solid var(--sand);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(135deg, #E8D5C4 0%, #D4B5A0 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            position: relative;
+        }
+
+        .moment-text {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            text-align: justify;
+            color: #555;
+        }
+
+        /* Navigation Controls */
+        .gallery-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .nav-button {
+            background: var(--navy);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-button:hover {
+            background: var(--gold);
+            transform: scale(1.1);
+        }
+
+        .nav-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: scale(1);
+        }
+
+        .moment-indicators {
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ddd;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .indicator.active {
+            background: var(--gold);
+            width: 30px;
+            border-radius: 6px;
+        }
+
+        .indicator:hover {
+            background: var(--coral);
+        }
+
+        .couple-feature {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 3rem;
+            border-top: 2px solid #ddd;
+        }
+
+        .couple-photo {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 12px solid var(--sand);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, #E8D5C4 0%, #D4B5A0 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .decorative-hearts {
+            margin-top: 2rem;
+            font-size: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .heart {
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        .heart:nth-child(2) { animation-delay: 0.3s; }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(5deg);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.05);
+                opacity: 0.9;
+            }
+        }
+
+        @keyframes fly {
+            0%, 100% {
+                transform: translateX(0) translateY(0);
+            }
+            25% {
+                transform: translateX(-15px) translateY(-10px);
+            }
+            75% {
+                transform: translateX(15px) translateY(10px);
+            }
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            25% {
+                transform: scale(1.15);
+            }
+            50% {
+                transform: scale(1);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .article-body {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .moment-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .magazine-title {
+                font-size: 2.5rem;
+                letter-spacing: 6px;
+            }
+
+            .magazine-title::before,
+            .magazine-title::after {
+                display: none;
+            }
+
+            .feature-portrait {
+                max-width: 350px;
+            }
+
+            .spread-content {
+                padding: 2.5rem;
+            }
+
+            .palm-illustration {
+                width: 120px;
+                height: 220px;
+            }
+
+            .sun-illustration {
+                width: 100px;
+                height: 100px;
+            }
+
+            .article-meta {
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .header-top {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .magazine-date::before,
+            .magazine-edition::after {
+                display: none;
+            }
+
+            .article-meta {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .feature-portrait {
+                max-width: 280px;
+            }
+
+            .spread-content {
+                padding: 2rem;
+            }
+
+            .couple-photo {
+                width: 220px;
+                height: 220px;
+            }
+
+            .moment-image {
+                max-width: 280px;
+                margin: 0 auto;
+            }
+
+            .gallery-controls {
+                gap: 1rem;
+            }
+
+            .nav-button {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+
+            .countdown-container {
+                padding: 1.2rem 2rem;
+            }
+
+            .countdown-timer {
+                font-size: 1.3rem;
+            }
+
+            .action-button {
+                padding: 1rem 2rem;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Magazine Header -->
+    <header class="magazine-header">
+        <div class="header-top">
+            <span class="magazine-date" id="currentDate"></span>
+            <span class="magazine-edition">Edición Especial de Amor</span>
+        </div>
+        <div class="magazine-masthead">
+            <h1 class="magazine-title">MOMO</h1>
+            <p class="magazine-tagline">Magazine de Historias & Amor</p>
+        </div>
+    </header>
+
+    <!-- Featured Article -->
+    <article class="featured-hero">
+        <header class="article-header">
+            <div class="category-badge">EVENTO EN CAMINO</div>
+            <h2 class="article-title">RENATO & FERNANDA</h2>
+            <p class="article-deck">
+                Se aproxima una nueva memoria juntos. En pocos días, Renato y Fernanda podrán 
+                compartir un día muy importante.
+            </p>
+            <div class="article-meta">
+                <a href="pregunta.html" class="action-button">Conocer más</a>
+                <div class="countdown-container">
+                    <div class="countdown-label">Faltan</div>
+                    <div class="countdown-timer" id="countdown">Calculando...</div>
+                </div>
+            </div>
+        </header>
+
+        <div class="article-body">
+            <div class="article-content">
+                <p class="article-text drop-cap">
+                    En el corazón de una historia de un comienzo áspero que escondía primaveras, 
+                    Ellos se miraban en secreto, como quien intenta entender algo que le inquieta y le atrae al mismo tiempo.
+                    Renato y Fernanda, tan distintos en formas de sentir y mirar el mundo, fueron acercándose sin darse cuenta.
+                    Su historia comenzo en un lugar especial para ella, un espacio que se convirtió en testigo silencioso de miradas que ya no podían esconderse.
+                </p>
+
+                <div class="pull-quote">
+                    "El amor verdadero no es encontrar a alguien con quien puedas vivir, 
+                    es encontrar a alguien sin quien no puedas vivir."
+                </div>
+            </div>
+
+            <div class="feature-image-section">
+                <div class="feature-portrait">
+<img src="img/Fer.png"
+     class="cover"
+     style="width:100%; height:100%; object-fit:cover; object-position:center; transform:scale(1.1);">
+
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <!-- Feature Spread -->
+    <section class="feature-spread">
+       
+        <div class="spread-content">
+            <h3 class="spread-title">Nosotros</h3>
+            
+            <!-- Moments Gallery -->
+            <div class="moments-gallery">
+                <div class="moments-container">
+                    <div class="moments-track" id="momentsTrack">
+                        
+                        <!-- Moment 1: Nuestro primer ramo -->
+                        <div class="moment-card active" data-moment="0">
+                            <div class="moment-header">
+                                <h4 class="moment-title">Nuestro primer ramo</h4>
+                                <p class="moment-date">Agosto 2025</p>
+                            </div>
+                            <div class="moment-content">
+
+                                <div class="moment-image">
+                                    <img src="img/Flores.png"
+                                        class="cover"
+                                        style="width:100%; height:100%; object-fit:cover; object-position:center; transform:scale(1.1);">
+                                </div>
+                                <div class="moment-text">
+                                    <p>
+                                        Día de la novia, el primer ramo que le entregó no fue solo un regalo; fueron momentos nerviosos de cómo entregárselo, 
+                                        cómo evitar que lo encontrara antes de tiempo y cómo fingir que todo estaba bien cuando, por dentro, solo él quería que le gustara.
+                                    </p>
+                                    <p>
+                                        Cada pregunta casual pensada cuidadosamente para no levantar sospechas, para descubrir que tipo de flores le gustaban. 
+                                        Cada segundo de duda encontró su recompensa en ese instante único cuando recibio las flores.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Moment 2: Primera playa -->
+                        <div class="moment-card" data-moment="1">
+                            <div class="moment-header">
+                                <h4 class="moment-title">Playita</h4>
+                                <p class="moment-date">Diciembre 2025</p>
+                            </div>
+                            <div class="moment-content">
+                                <div class="moment-image">
+                                    <img src="img/playa.png"
+                                        class="cover"
+                                        style="width:100%; height:100%; object-fit:cover; object-position:center; transform:scale(1.1);">
+                                </div>
+                                <div class="moment-text">
+                                    <p>
+                                        El sonido de las olas, el sol rozando tu rostro y un atardecer imposible de olvidar;
+                                        aunque no estábamos solos, para mí la única persona presente eras tú
+                                    </p>
+                                    <p>
+                                        Aquel día de amigo secreto tuvo un significado distinto: por coincidencia o quizás por destino,
+                                        le tocó justamente la persona que más quería. 
+                                        Volver a ese lugar donde todo empezó y donde por primera vez pudieron conectar hizo que el momento fuera aún más especial. 
+                                        Esta vez, él tuvo la oportunidad de entregarle un pequeño pedazo de todo el cariño que llevaba dentro.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Moment 3: Primera navidad -->
+                        <div class="moment-card" data-moment="2">
+                            <div class="moment-header">
+                                <h4 class="moment-title">Primera navidad</h4>
+                                <p class="moment-date">Diciembre 2024</p>
+                            </div>
+                            <div class="moment-content">
+                                <div class="moment-image">
+                                    <img src="img/Navidad.jpeg"
+                                        class="cover"
+                                        style="width:100%; height:100%; object-fit:cover; object-position:bottom; transform:scale(1.1);">
+                                </div>
+                                <div class="moment-text">
+                                    <p>
+                                        Nuestra primera navidad juntos, primera navidad despues
+                                        de muchos años donde los dos disfrutaron con ansias hacerse feliz.
+                                        Fue la primera vez que él sintió esa presión silenciosa de buscar el obsequio perfecto
+                                        y los nervios constantes de no encontrarlo a tiempo.
+                                    </p>
+                                    <p>
+                                        Aunque estaban separados físicamente, él la sentía presente en cada momento, 
+                                        con la esperanza de que ella tambien sintiera lo mismo.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Gallery Controls -->
+                <div class="gallery-controls">
+                    <button class="nav-button" id="prevBtn" onclick="navigateMoments(-1)">‹</button>
+                    <div class="moment-indicators" id="indicators"></div>
+                    <button class="nav-button" id="nextBtn" onclick="navigateMoments(1)">›</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+   <script>
+        // Moments Gallery
+        let currentMoment = 0;
+        const moments = document.querySelectorAll('.moment-card');
+        const totalMoments = moments.length;
+
+        // Create indicators
+        function createIndicators() {
+            const indicatorsContainer = document.getElementById('indicators');
+            for (let i = 0; i < totalMoments; i++) {
+                const indicator = document.createElement('div');
+                indicator.className = 'indicator' + (i === 0 ? ' active' : '');
+                indicator.onclick = () => goToMoment(i);
+                indicatorsContainer.appendChild(indicator);
+            }
+        }
+
+        // Navigate moments
+        function navigateMoments(direction) {
+            const newIndex = currentMoment + direction;
+            if (newIndex >= 0 && newIndex < totalMoments) {
+                goToMoment(newIndex);
+            }
+        }
+
+        // Go to specific moment
+        function goToMoment(index) {
+            // Remove active class from all
+            moments.forEach(moment => moment.classList.remove('active'));
+            document.querySelectorAll('.indicator').forEach(ind => ind.classList.remove('active'));
+
+            // Add active class to current
+            moments[index].classList.add('active');
+            document.querySelectorAll('.indicator')[index].classList.add('active');
+
+            currentMoment = index;
+
+            // Update button states
+            document.getElementById('prevBtn').disabled = index === 0;
+            document.getElementById('nextBtn').disabled = index === totalMoments - 1;
+        }
+
+        // Auto-advance moments
+        let autoAdvanceInterval;
+        function startAutoAdvance() {
+            autoAdvanceInterval = setInterval(() => {
+                const nextIndex = (currentMoment + 1) % totalMoments;
+                goToMoment(nextIndex);
+            }, 8000);
+        }
+
+        function stopAutoAdvance() {
+            clearInterval(autoAdvanceInterval);
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') navigateMoments(-1);
+            if (e.key === 'ArrowRight') navigateMoments(1);
+        });
+
+        // Touch/swipe support
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        const momentsContainer = document.querySelector('.moments-container');
+        momentsContainer.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        momentsContainer.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            if (touchEndX < touchStartX - 50) navigateMoments(1);
+            if (touchEndX > touchStartX + 50) navigateMoments(-1);
+        }
+
+        // Stop auto-advance on interaction
+        momentsContainer.addEventListener('mouseenter', stopAutoAdvance);
+        momentsContainer.addEventListener('mouseleave', startAutoAdvance);
+
+        // Set current date in header
+        function setCurrentDate() {
+            const options = { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            };
+            const currentDate = new Date().toLocaleDateString('es-ES', options);
+            document.getElementById('currentDate').textContent = currentDate.toUpperCase();
+        }
+
+        // Countdown to February 14, 2026
+        function updateCountdown() {
+            const targetDate = new Date('2026-02-14T18:30:00').getTime();
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+
+            if (difference < 0) {
+                document.getElementById('countdown').innerHTML = '¡ES HOY!';
+                return;
+            }
+
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            document.getElementById('countdown').innerHTML = 
+                `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        }
+
+        // Parallax effect
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const sun = document.querySelector('.sun-illustration');
+            const birds = document.querySelector('.birds-illustration');
+            
+            if (sun) {
+                sun.style.transform = `translateY(${scrolled * 0.3}px)`;
+            }
+            if (birds) {
+                birds.style.transform = `translateX(${scrolled * 0.2}px)`;
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeIn 1s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            setCurrentDate();
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+            
+            createIndicators();
+            startAutoAdvance();
+
+            // Observe elements
+            document.querySelectorAll('.article-body, .spread-content').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
